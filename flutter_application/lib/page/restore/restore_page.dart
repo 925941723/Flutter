@@ -89,12 +89,12 @@ class _RestorePageState extends State<RestorePage> with RestorationMixin {
   }
 
   @override
-  // 需要实现方法1，必须跟RootRestorationScope注册的restorationId同名
-  String? get restorationId => 'root';
+  // 需要实现方法1，restorationId为页面的id
+  String? get restorationId => 'restore_page';
 
   @override
   // 需要实现方法2
   void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    registerForRestoration(_counter, 'count'); // 这个restorationId随便取
+    registerForRestoration(_counter, 'count'); // 这个restorationId为变量的id
   }
 }
