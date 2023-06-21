@@ -59,13 +59,13 @@ class ThemesController with ChangeNotifier {
   /// 设置主题资源
   void setThemeSource(){
     switch(_themeMode.name){
-      case "light":
+      case 'light':
         _themeSource = ThemeColorLight().themeSource;
         break;
-      case "dark":
+      case 'dark':
         _themeSource = ThemeColorDark().themeSource;
         break;
-      case "system":
+      case 'system':
       // 为兼容多window，默认取第一个window: WidgetsBinding.instance.platformDispatcher.views.first
         if(Brightness.light == WidgetsBinding.instance.platformDispatcher.views.first.platformDispatcher.platformBrightness) {
           _themeSource = ThemeColorLight().themeSource;
