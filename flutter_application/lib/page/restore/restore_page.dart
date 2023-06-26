@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // 可恢复页面
 class RestorePage extends StatefulWidget {
   const RestorePage({super.key, required this.title});
-
+  static const routeName = '/restore_page';
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
