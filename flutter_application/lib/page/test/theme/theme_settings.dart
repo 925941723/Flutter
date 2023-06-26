@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/theme/themes_controller.dart';
 
-import 'themes_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///

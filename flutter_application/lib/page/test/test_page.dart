@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/page/test/restore/restore_page.dart';
 import 'package:flutter_application/routes/navigator_util.dart';
-import 'package:flutter_application/theme/theme_settings.dart';
+import 'package:flutter_application/page/test/theme/theme_settings.dart';
+import 'package:flutter_application/theme/themes_controller.dart';
+import 'package:provider/provider.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -18,6 +20,7 @@ class _TestPageState extends State<TestPage>  {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemesController>();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -26,13 +29,7 @@ class _TestPageState extends State<TestPage>  {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the RestorePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const Text('测试页面', style: TextStyle(color: Color(0xFF333333))),
+        title: Text('测试页面', style: TextStyle(color: Color(themeProvider.themeSource.textBlack))),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
