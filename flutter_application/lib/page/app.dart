@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/page/restore/restore_page.dart';
+import 'package:flutter_application/page/test/restore/restore_page.dart';
+import 'package:flutter_application/page/test/test_page.dart';
 import 'package:flutter_application/theme/theme_settings.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
 
@@ -25,8 +26,7 @@ class MyApp extends StatelessWidget {
         // MaterialApp to restore the navigation stack when a user leaves and
         // returns to the app after it has been killed while running in the
         // background.
-        // restorationScopeId: 'root', // 使用home来加载单页面时才能生效
-        // 使用onGenerateRoute后，restorationScopeId不会生效；需要使用RootRestorationScope(restorationId: 'root', child: page)这种方式
+        restorationScopeId: 'root', // 打开这个可使navigator缓存被关闭前的数据
         onGenerateRoute: (RouteSettings routeSettings) {
           return MaterialPageRoute<void>(
             settings: routeSettings,
@@ -38,9 +38,10 @@ class MyApp extends StatelessWidget {
                 case ThemeSettings.routeName:
                   page = ThemeSettings(controller: themeController);
                 default:
-                  page = ThemeSettings(controller: themeController);
+                  page = const TestPage();
               }
-              return RootRestorationScope(restorationId: 'root', child: page);
+              // 使用RootRestorationScope(restorationId: 'root', child: page)缓存各个页面被关闭前的数据
+              return RootRestorationScope(restorationId: routeSettings.name, child: page);
             },
           );
         },
