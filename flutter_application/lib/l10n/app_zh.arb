@@ -1,0 +1,6 @@
+{
+  "appTitle": "flutter测试",
+  "@appTitle": {
+    "description": "应用标题"
+  }
+}

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter_application/page/test/restore/restore_page.dart';
 import 'package:flutter_application/page/test/test_page.dart';
 import 'package:flutter_application/page/test/theme/theme_settings.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
-import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -31,7 +35,9 @@ class MyApp extends StatelessWidget {
               // MaterialApp to restore the navigation stack when a user leaves and
               // returns to the app after it has been killed while running in the
               // background.
+              // 意外关闭缓存
               restorationScopeId: 'root', // 打开这个可使navigator缓存被关闭前的数据
+              // 页面跳转
               onGenerateRoute: (RouteSettings routeSettings) {
                 return MaterialPageRoute<void>(
                   settings: routeSettings,
@@ -69,9 +75,22 @@ class MyApp extends StatelessWidget {
               //         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               //         useMaterial3: true,
               //       ),
+              // 主题
               theme: ThemeData(),
               darkTheme: ThemeData.dark(),
               themeMode: themeController.themeMode,
+
+              // 国际化
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en', ''), // English, no country code
+                Locale("zh", "CN"), // 中文简体
+              ],
             );
           },
         ),

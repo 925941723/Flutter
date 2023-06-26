@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_application/page/test/restore/restore_page.dart';
 import 'package:flutter_application/routes/navigator_util.dart';
 import 'package:flutter_application/page/test/theme/theme_settings.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
-import 'package:provider/provider.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -29,7 +30,7 @@ class _TestPageState extends State<TestPage>  {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        title: Text('测试页面', style: TextStyle(color: Color(themeProvider.themeSource.textBlack))),
+        title: Text(AppLocalizations.of(context)!.appTitle, style: TextStyle(color: Color(themeProvider.themeSource.textBlack))),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
