@@ -74,8 +74,7 @@ class _RestorePageState extends State<RestorePage> with RestorationMixin {
               'You have pushed the button this many times:',
             ),
             Text(
-              '${_counter.value}',
-              style: Theme.of(context).textTheme.headlineMedium,
+              '${_counter.value}'
             ),
           ],
         ),
