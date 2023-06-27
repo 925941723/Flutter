@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       if(kIsWeb){ // 专用在web下面，android或ios判断
+         switch(Theme.of(context).platform){
+           case TargetPlatform.android:
+             print('web android');
+             break;
+           case TargetPlatform.iOS:
+             print('web iOS');
+             break;
+           case TargetPlatform.windows:
+             print('web windows');
+             break;
+           default:
+             print('web ${Theme.of(context).platform}');
+             break;
+         }
+       }
     // Glue the SettingsController to the MaterialApp.
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
