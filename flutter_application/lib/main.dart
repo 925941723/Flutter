@@ -2,13 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/kvdb/key_value_database_helper.dart';
+import 'package:flutter_application/kvdb/secure_storage_processor.dart';
 import 'package:flutter_application/page/app.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
 import 'package:flutter_application/theme/themes_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  // 主题
   final themeController = ThemesController(ThemesService());
   await themeController.loadSettings();
 
@@ -20,6 +22,16 @@ void main() async {
       print('platform android');
     }
   }
+
+  // if(!kIsWeb && (Platform.isAndroid || Platform.isIOS)){ // 安卓或ios原生
+  //   await KeyValueDatabaseHelper().init(MMKVProcessor()); // 只有打包安卓的时候采用mmvk，否则会报错
+  // }else{
+  //   await KeyValueDatabaseHelper().init(SharedPreferencesProcessor());
+  // }
+
+  await KeyValueDatabaseHelper().init(SecureStorageProcessor());
+  await KeyValueDatabaseHelper().setString('key', 'value');
+  print(await KeyValueDatabaseHelper().getString('key'));
 
   runApp(
       MyApp(themeController: themeController)
