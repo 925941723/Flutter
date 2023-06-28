@@ -5,9 +5,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/kvdb/key_value_database_helper.dart';
 import 'package:flutter_application/kvdb/secure_storage_processor.dart';
+import 'package:flutter_application/models/account_model.dart';
+import 'package:flutter_application/models/user_model.dart';
 import 'package:flutter_application/page/app.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
 import 'package:flutter_application/theme/themes_service.dart';
+
+import 'models/account_model2.dart';
+import 'models/user_model2.dart';
 
 void main() async {
   // 接入bugly方式
@@ -76,7 +81,16 @@ void main() async {
     await KeyValueDatabaseHelper().setString('key', 'value');
     print(await KeyValueDatabaseHelper().getString('key'));
 
-    // 启动
+    // JSON和序列化数据  官方方式 https://flutter.cn/docs/data-and-backend/json
+    AccountModel accountModel = AccountModel('account', 'password');
+    UserModel userModel = UserModel('name', accountModel);
+    print('userModel:${userModel.toJson()}');
+    // 使用网页转换方式 https://app.quicktype.io/ 使用这种
+    AccountModel2 accountModel2 = AccountModel2(account: 'account', password: 'password');
+    UserModel2 userModel2 = UserModel2(name: 'name',accountModel2: accountModel2);
+    print('userModel2:${userModel2.toJson()}');
+
+      // 启动
     runApp(MyApp(themeController: themeController));
   },
         (Object error, StackTrace stack) async {
