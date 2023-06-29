@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -66,6 +67,8 @@ class MyApp extends StatelessWidget {
                                 title: 'Flutter Demo Home Page');
                           case ThemeSettings.routeName:
                             page = ThemeSettings(controller: themeController);
+                          case ModelToJsonPage.routeName:
+                            page = const ModelToJsonPage();
                           default:
                             page = const TestPage();
                         }

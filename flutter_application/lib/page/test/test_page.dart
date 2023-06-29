@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_application/page/test/restore/restore_page.dart';
@@ -53,7 +54,13 @@ class _TestPageState extends State<TestPage>  {
                   NavigatorUtil.pushNamed(context, ThemeSettings.routeName);
                 },
                 child: const Text('主题设置'),
-              )
+              ),
+              TextButton(
+                onPressed: () {
+                  NavigatorUtil.pushNamed(context, ModelToJsonPage.routeName);
+                },
+                child: const Text('模块与json转换'),
+              ),
             ],
           ),
         ),
