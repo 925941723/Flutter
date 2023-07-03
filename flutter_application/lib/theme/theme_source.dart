@@ -1,6 +1,10 @@
 
 class ThemeSource{
   int textBlack;
+  int textWhite;
 
-  ThemeSource(this.textBlack);
+  ThemeSource(
+      this.textBlack,
+      this.textWhite,
+      );
 }

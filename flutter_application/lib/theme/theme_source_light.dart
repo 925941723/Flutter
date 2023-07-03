@@ -1,11 +1,9 @@
 
 import 'theme_source.dart';
 
-class ThemeColorLight {
-  final ThemeSource _themeSource = ThemeSource(
-    0xff000000
+class ThemeSourceLight extends ThemeSource {
+  ThemeSourceLight() : super(
+    0xff000000,
+    0xffffffff,
   );
-
-  ThemeSource get themeSource => _themeSource;
-
 }
