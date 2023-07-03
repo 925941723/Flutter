@@ -1,5 +1,5 @@
 
-class ThemeSource{
+abstract class ThemeSource{
   int textBlack;
   int textWhite;
 
