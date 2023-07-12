@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/future/future_page.dart';
 import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
     // 使用AnimatedBuilder监听themeController改变来实现动态切换主题的效果
+    // 同时使用provider，将themeController设置成全局的state，方便一个地方设置，其他地方共享该状态。其他地方的使用可以参考test_page
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => themeController),
@@ -69,6 +71,8 @@ class MyApp extends StatelessWidget {
                             page = ThemeSettings(controller: themeController);
                           case ModelToJsonPage.routeName:
                             page = const ModelToJsonPage();
+                          case FuturePage.routeName:
+                            page = const FuturePage();
                           default:
                             page = const TestPage();
                         }

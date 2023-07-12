@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
 
 
-/// Displays the various settings that can be customized by the user.
-///
-/// When a user changes a setting, the SettingsController is updated and
-/// Widgets that listen to the SettingsController are rebuilt.
+/// 主题设置页面
 class ThemeSettings extends StatelessWidget {
   const ThemeSettings({super.key, required this.controller});
 

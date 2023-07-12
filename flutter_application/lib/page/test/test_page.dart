@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/future/future_page.dart';
 import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_application/routes/navigator_util.dart';
 import 'package:flutter_application/page/test/theme/theme_settings.dart';
 import 'package:flutter_application/theme/themes_controller.dart';
 
+// 测试主页
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
   static const routeName = '/test_page';
@@ -22,6 +24,7 @@ class _TestPageState extends State<TestPage>  {
 
   @override
   Widget build(BuildContext context) {
+    // 根据主题的provider动态生成对应颜色
     final themeProvider = context.watch<ThemesController>();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -60,6 +63,12 @@ class _TestPageState extends State<TestPage>  {
                   NavigatorUtil.pushNamed(context, ModelToJsonPage.routeName);
                 },
                 child: const Text('模块与json转换'),
+              ),
+              TextButton(
+                onPressed: () {
+                  NavigatorUtil.pushNamed(context, FuturePage.routeName);
+                },
+                child: const Text('future测试'),
               ),
             ],
           ),

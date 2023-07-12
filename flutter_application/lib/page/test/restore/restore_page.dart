@@ -20,6 +20,7 @@ class RestorePage extends StatefulWidget {
 }
 
 class _RestorePageState extends State<RestorePage> with RestorationMixin {
+  // 需要将变量声明为Restorable才可以恢复
   final RestorableInt _counter = RestorableInt(0);
 
   void _incrementCounter() {

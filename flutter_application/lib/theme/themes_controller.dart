@@ -7,11 +7,8 @@ import 'theme_source_dark.dart';
 import 'themes_service.dart';
 import 'theme_source_light.dart';
 
-/// A class that many Widgets can interact with to read user settings, update
-/// user settings, or listen to user settings changes.
-///
-/// Controllers glue Data Services to Flutter Widgets. The SettingsController
-/// uses the SettingsService to store and retrieve user settings.
+/// 主题控制器
+/// 使用with方式结合ChangeNotifier让主题可以通知其他感知控件
 class ThemesController with ChangeNotifier {
   ThemesController(this._themesService);
 

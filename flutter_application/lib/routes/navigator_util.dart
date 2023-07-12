@@ -14,6 +14,7 @@ class NavigatorUtil {
 
   /// 跳转，不传参
   static String pushNamed(BuildContext context, String routeName) {
+    // restorable方式跳转，可以在app被异常关闭时恢复数据
     return Navigator.restorablePushNamed(context,routeName);
   }
 
