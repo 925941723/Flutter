@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/dio/dio_page.dart';
 import 'package:flutter_application/page/test/future/future_page.dart';
 import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -73,6 +74,8 @@ class MyApp extends StatelessWidget {
                             page = const ModelToJsonPage();
                           case FuturePage.routeName:
                             page = const FuturePage();
+                          case DioPage.routeName:
+                            page = const DioPage();
                           default:
                             page = const TestPage();
                         }

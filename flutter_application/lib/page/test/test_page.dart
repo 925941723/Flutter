@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/test/dio/dio_page.dart';
 import 'package:flutter_application/page/test/future/future_page.dart';
 import 'package:flutter_application/page/test/model2json/model_to_json_page.dart';
 import 'package:provider/provider.dart';
@@ -69,6 +70,12 @@ class _TestPageState extends State<TestPage>  {
                   NavigatorUtil.pushNamed(context, FuturePage.routeName);
                 },
                 child: const Text('future测试'),
+              ),
+              TextButton(
+                onPressed: () {
+                  NavigatorUtil.pushNamed(context, DioPage.routeName);
+                },
+                child: const Text('dio测试'),
               ),
             ],
           ),
