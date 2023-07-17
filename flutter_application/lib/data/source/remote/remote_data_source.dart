@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_application/network/dio_util.dart';
-import 'package:flutter_application/network/interceptor/dio_logger_error_interceptor.dart';
-import 'package:flutter_application/network/interceptor/dio_logger_response_interceptor.dart';
-import 'package:flutter_application/network/persistent_interceptor.dart';
-
-import 'interceptor/dio_logger_request_interceptor.dart';
+import 'package:flutter_application/data/source/remote/persistent_interceptor.dart';
 
 // 远程数据源
 class RemoteDataSource{
@@ -26,6 +22,14 @@ class RemoteDataSource{
       'password': 'GDhtyw@2022',
     },
       options: Options(contentType: Headers.formUrlEncodedContentType) // 修改单个请求方式
+    );
+  }
+
+  Future testFail() async {
+    return _dio.post('admin/login/token', data: {
+      'username': 'admin',
+      'password': 'GDhtyw@2022',
+    },
     );
   }
 }

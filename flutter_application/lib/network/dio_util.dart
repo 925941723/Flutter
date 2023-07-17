@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:flutter_application/network/persistent_interceptor.dart';
+import 'package:flutter_application/data/source/remote/persistent_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'interceptor/dio_logger_error_interceptor.dart';

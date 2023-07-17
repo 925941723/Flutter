@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_application/network/network_exception.dart';
-import 'package:flutter_application/network/response_bean.dart';
+import 'package:flutter_application/data/source/remote/network_exception.dart';
+import 'package:flutter_application/data/source/remote/response_bean.dart';
 
 // 持久层拦截器
 class PersistentInterceptor extends Interceptor {

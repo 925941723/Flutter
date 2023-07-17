@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/network/remote_data_source.dart';
+import 'package:flutter_application/data/model/login_bean.dart';
+import 'package:flutter_application/data/source/app_repository.dart';
 
 // dio测试页面
 class DioPage extends StatefulWidget {
@@ -13,10 +14,7 @@ class DioPage extends StatefulWidget {
 }
 
 class _DioPageState extends State<DioPage>{
-  // String _data = '';
-  // String _catchError = '';
-  // String _tryCatchError = '';
-  // String _onError = '';
+  String _data = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +33,13 @@ class _DioPageState extends State<DioPage>{
                 },
                 child: const Text('请求'),
               ),
-              // Text('data:$_data'),
-              // Text('catchError:$_catchError'),
-              // Text('tryCatchError:$_tryCatchError'),
-              // Text('onError:$_onError'),
+              TextButton(
+                onPressed: () {
+                  testFail();
+                },
+                child: const Text('请求失败'),
+              ),
+              Text(_data),
             ],
           ),
         ),
@@ -46,7 +47,35 @@ class _DioPageState extends State<DioPage>{
     );
   }
 
+  // 请求测试
   test(){
-    RemoteDataSource().test();
+    setState(() {
+      _data = '';
+    });
+    AppRepository().test().then((value){
+      setState(() {
+        _data = LoginBean.fromJson(value.data).accessToken;
+      });
+    }, onError: (e){
+      setState(() {
+        _data = e.toString();
+      });
+    });
+  }
+
+  // 请求失败测试
+  testFail(){
+    setState(() {
+      _data = '';
+    });
+    AppRepository().testFail().then((value){
+      setState(() {
+        _data = value.toString();
+      });
+    }, onError: (e){
+      setState(() {
+        _data = e.toString();
+      });
+    });
   }
 }
